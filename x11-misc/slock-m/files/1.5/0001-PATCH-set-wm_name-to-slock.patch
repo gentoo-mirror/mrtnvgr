@@ -1,7 +1,7 @@
 From 26421233101d2e2a7868950fb02b99c8fb1c6868 Mon Sep 17 00:00:00 2001
 From: mrtnvgr <martynovegorOF@yandex.ru>
 Date: Wed, 2 Nov 2022 19:58:05 +0700
-Subject: [PATCH] [PATCH] set wm_name to "slock"
+Subject: [PATCH] set wm_name to "slock"
 
 ---
  slock.c | 6 ++++++
