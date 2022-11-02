@@ -1,0 +1,29 @@
+From 26421233101d2e2a7868950fb02b99c8fb1c6868 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Wed, 2 Nov 2022 19:58:05 +0700
+Subject: [PATCH] [PATCH] set wm_name to "slock"
+
+---
+ slock.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/slock.c b/slock.c
+index 5ae738c..a80e78b 100644
+--- a/slock.c
++++ b/slock.c
+@@ -256,6 +256,12 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
+ 	                                &color, &color, 0, 0);
+ 	XDefineCursor(dpy, lock->win, invisible);
+ 
++	// set WM_NAME to "slock"
++	char *window_name = "slock";
++	XTextProperty wmName;
++	XStringListToTextProperty(&window_name, 1, &wmName);
++	XSetWMName(dpy, lock->win, &wmName);
++
+ 	/* Try to grab mouse pointer *and* keyboard for 600ms, else fail the lock */
+ 	for (i = 0, ptgrab = kbgrab = -1; i < 6; i++) {
+ 		if (ptgrab != GrabSuccess) {
+-- 
+2.38.0
+
