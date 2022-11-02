@@ -1,6 +1,6 @@
 EAPI=8
 
-DESCRIPTION="Advanced cross-platform rhythm game focused on keyboard play"
+DESCRIPTION="(MASKED) Advanced cross-platform rhythm game focused on keyboard play"
 
 HOMEPAGE="https://github.com/etternagame/etterna/"
 
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/etternagame/etterna/archive/refs/tags/v${PV}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS=""
 fi
 
 LICENSE="MIT"
