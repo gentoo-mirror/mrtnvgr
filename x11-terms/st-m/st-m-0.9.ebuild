@@ -34,7 +34,6 @@ S="${WORKDIR}/st-${PV}"
 if [[ ${PV} == "0.9" ]] || [[ ${PV} == 9999 ]]; then
 	PATCHES=(
 		"${FILESDIR}"/st-0.9-bold-is-not-bright-20190127-3be4cf1.diff
-		"${FILESDIR}"/st-0.9-dynamic-cursor-color-0.8.4.diff
 		"${FILESDIR}"/st-0.9-xresources-signal-reloading-20220407-ef05519.diff
 	)
 fi
