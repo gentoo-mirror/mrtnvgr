@@ -1,0 +1,52 @@
+From c8613831857e3bf53bce64fca0b8d5c31383528d Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Thu, 3 Nov 2022 12:44:49 +0700
+Subject: [PATCH] xresources support: all config settings
+
+---
+ config.def.h | 24 ++++++++++++++----------
+ 1 file changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 36f2962..913d435 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -1,6 +1,6 @@
+ /* user and group to drop privileges to */
+-static const char *user  = "nobody";
+-static const char *group = "nogroup";
++static char *user  = "nobody";
++static char *group = "nogroup";
+ 
+ static const char *colorname[NUMCOLS] = {
+ 	[INIT] =   "black",     /* after initialization */
+@@ -8,14 +8,18 @@ static const char *colorname[NUMCOLS] = {
+ 	[FAILED] = "#CC3333",   /* wrong password */
+ };
+ 
+-ResourcePref resources[] = {
+-		{ "init",       STRING,  &colorname[INIT] },
+-		{ "input",      STRING,  &colorname[INPUT] },
+-		{ "failed",     STRING,  &colorname[FAILED] },
+-};
+-
+ /* treat a cleared input like a wrong password (color) */
+-static const int failonclear = 1;
++static int failonclear = 1;
+ 
+ /* time in seconds before the monitor shuts down */
+-static const int monitortime = 5;
++static int monitortime = 5;
++
++ResourcePref resources[] = {
++		{ "init",        STRING,  &colorname[INIT] },
++		{ "input",       STRING,  &colorname[INPUT] },
++		{ "failed",      STRING,  &colorname[FAILED] },
++		{ "user",        STRING,  &user },
++		{ "group",       STRING,  &group },
++		{ "failonclear", INTEGER, &failonclear},
++		{ "monitortime", INTEGER, &monitortime},
++};
+-- 
+2.38.0
+
