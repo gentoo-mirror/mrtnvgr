@@ -15,14 +15,10 @@ fi
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-IUSE="mousewheel"
 
 S="${WORKDIR}/scroll-${PV}"
 
 src_prepare() {
-	if use mousewheel; then
-		PATCHES+=("${FILESDIR}/0001-enable-mouse-wheel-keybindings.patch")
-	fi
 	default
 
 	sed -i \
