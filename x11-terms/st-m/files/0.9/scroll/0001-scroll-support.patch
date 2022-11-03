@@ -1,0 +1,25 @@
+From b11c66d20b23815be3cd629860ce853286c7a95d Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Thu, 3 Nov 2022 13:28:30 +0700
+Subject: [PATCH] scroll support
+
+---
+ config.def.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index 91ab8ca..0c0639e 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -19,7 +19,7 @@ static int borderpx = 2;
+ static char *shell = "/bin/sh";
+ char *utmp = NULL;
+ /* scroll program: to enable use a string like "scroll" */
+-char *scroll = NULL;
++char *scroll = "scroll";
+ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
+ 
+ /* identification sequence returned in DA and DECID */
+-- 
+2.38.0
+

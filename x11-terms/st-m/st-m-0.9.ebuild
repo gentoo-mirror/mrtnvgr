@@ -15,8 +15,10 @@ fi
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
+IUSE="scroll"
 
 RDEPEND="
+	scroll? ( x11-misc/scroll-m )
 	>=sys-libs/ncurses-6.0:0=
 	media-libs/fontconfig
 	x11-libs/libX11
@@ -37,6 +39,9 @@ PATCHES=(
 )
 
 src_prepare() {
+	if use scroll; then
+		PATCHES+=("${PATCHESDIR}/scroll/0001-scroll-support.patch")
+	fi
 	default
 
 	sed -i \
