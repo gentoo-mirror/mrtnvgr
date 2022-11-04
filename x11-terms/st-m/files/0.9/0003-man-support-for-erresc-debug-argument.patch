@@ -1,0 +1,44 @@
+From b9340fcfc3361071d78b64f694d451bf19c0a059 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Fri, 4 Nov 2022 21:27:55 +0700
+Subject: [PATCH] man support for erresc debug argument
+
+---
+ st.1 | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/st.1 b/st.1
+index af720eb..4a9f633 100644
+--- a/st.1
++++ b/st.1
+@@ -3,7 +3,7 @@
+ st \- simple terminal
+ .SH SYNOPSIS
+ .B st
+-.RB [ \-aiv ]
++.RB [ \-aivd ]
+ .RB [ \-c
+ .IR class ]
+ .RB [ \-f
+@@ -27,7 +27,7 @@ st \- simple terminal
+ .RI [ arguments ...]]
+ .PP
+ .B st
+-.RB [ \-aiv ]
++.RB [ \-aivd ]
+ .RB [ \-c
+ .IR class ]
+ .RB [ \-f
+@@ -58,6 +58,9 @@ disable alternate screens in terminal
+ .BI \-c " class"
+ defines the window class (default $TERM).
+ .TP
++.B \-d
++print erresc warnings
++.TP
+ .BI \-f " font"
+ defines the
+ .I font
+-- 
+2.38.0
+

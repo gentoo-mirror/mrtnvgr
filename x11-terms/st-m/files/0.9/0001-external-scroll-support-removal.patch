@@ -1,0 +1,85 @@
+From 9d5326b8e4cedcf3342f17d654abbc235f268095 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Fri, 4 Nov 2022 21:23:07 +0700
+Subject: [PATCH] external scroll support removal
+
+---
+ FAQ          | 5 ++---
+ config.def.h | 9 +++------
+ st.1         | 1 -
+ st.c         | 3 ---
+ 4 files changed, 5 insertions(+), 13 deletions(-)
+
+diff --git a/FAQ b/FAQ
+index 6287a27..e9acefe 100644
+--- a/FAQ
++++ b/FAQ
+@@ -23,14 +23,13 @@ you can manually run `tic -sx st.info`.
+ * Using a terminal multiplexer.
+ 	* `st -e tmux` using C-b [
+ 	* `st -e screen` using C-a ESC
+-* Using the excellent tool of [scroll](https://git.suckless.org/scroll/).
+ * Using the scrollback [patch](https://st.suckless.org/patches/scrollback/).
+ 
+ 
+-## I would like to have utmp and/or scroll functionality by default
++## I would like to have utmp functionality by default
+ 
+ You can add the absolute path of both programs in your config.h file. You only
+-have to modify the value of utmp and scroll variables.
++have to modify the value of utmp variables.
+ 
+ 
+ ## Why doesn't the Del key work in some programs?
+diff --git a/config.def.h b/config.def.h
+index 91ab8ca..61d9114 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -11,15 +11,12 @@ static int borderpx = 2;
+ /*
+  * What program is execed by st depends of these precedence rules:
+  * 1: program passed with -e
+- * 2: scroll and/or utmp
+- * 3: SHELL environment variable
+- * 4: value of shell in /etc/passwd
+- * 5: value of shell in config.h
++ * 2: SHELL environment variable
++ * 3: value of shell in /etc/passwd
++ * 4: value of shell in config.h
+  */
+ static char *shell = "/bin/sh";
+ char *utmp = NULL;
+-/* scroll program: to enable use a string like "scroll" */
+-char *scroll = NULL;
+ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
+ 
+ /* identification sequence returned in DA and DECID */
+diff --git a/st.1 b/st.1
+index 39120b4..af720eb 100644
+--- a/st.1
++++ b/st.1
+@@ -171,7 +171,6 @@ See the LICENSE file for the terms of redistribution.
+ .BR tabbed (1),
+ .BR utmp (1),
+ .BR stty (1),
+-.BR scroll (1)
+ .SH BUGS
+ See the TODO file in the distribution.
+ 
+diff --git a/st.c b/st.c
+index 62def59..95d6d57 100644
+--- a/st.c
++++ b/st.c
+@@ -677,9 +677,6 @@ execsh(char *cmd, char **args)
+ 	if (args) {
+ 		prog = args[0];
+ 		arg = NULL;
+-	} else if (scroll) {
+-		prog = scroll;
+-		arg = utmp ? utmp : sh;
+ 	} else if (utmp) {
+ 		prog = utmp;
+ 		arg = NULL;
+-- 
+2.38.0
+
