@@ -1,0 +1,25 @@
+From 5b6c4df6fcb84f22e8c2e1fd0cd4c504e4d24396 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Fri, 4 Nov 2022 21:06:46 +0700
+Subject: [PATCH] scrollback mousewheel keybinds
+
+---
+ config.def.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/config.def.h b/config.def.h
+index d772293..8f374e0 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -176,6 +176,8 @@ static uint forcemousemod = ShiftMask;
+  */
+ static MouseShortcut mshortcuts[] = {
+ 	/* mask                 button   function        argument       release */
++	{ XK_NO_MOD,            Button4, kscrollup,      {.i = 1} },
++	{ XK_NO_MOD,            Button5, kscrolldown,    {.i = 1} },
+ 	{ XK_ANY_MOD,           Button2, clippaste,       {.i = 0},      1 },
+ 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
+ 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
+-- 
+2.38.0
+
