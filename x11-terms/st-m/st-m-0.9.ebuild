@@ -38,12 +38,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	if use xresources; then
-		PATCHES+=("${PATCHESDIR}/xresources/")
-	fi
-	if use scroll; then
-		PATCHES+=("${PATCHESDIR}/scroll/")
-	fi
+	use xresources && PATCHES+=("${PATCHESDIR}/xresources/")
+	use scroll && PATCHES+=("${PATCHESDIR}/scroll/")
 	default
 
 	sed -i \
