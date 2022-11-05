@@ -1,0 +1,32 @@
+From 6879c3fa588f6672a884cbb368eb796cfdbf1e34 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Sat, 5 Nov 2022 10:33:46 +0700
+Subject: [PATCH] xresources init priority bump
+
+---
+ x.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/x.c b/x.c
+index e91a8da..4f97cdc 100644
+--- a/x.c
++++ b/x.c
+@@ -2139,6 +2139,7 @@ usage(void)
+ int
+ main(int argc, char *argv[])
+ {
++	xrdb_load();
+ 	xw.l = xw.t = 0;
+ 	xw.isfixed = False;
+ 	xsetcursor(cursorshape);
+@@ -2199,7 +2200,6 @@ run:
+ 
+ 	setlocale(LC_CTYPE, "");
+ 	XSetLocaleModifiers("");
+-	xrdb_load();
+ 	signal(SIGUSR1, reload);
+ 	cols = MAX(cols, 1);
+ 	rows = MAX(rows, 1);
+-- 
+2.38.0
+
