@@ -15,7 +15,7 @@ fi
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-IUSE="scroll"
+IUSE="scroll xresources"
 
 RDEPEND="
 	>=sys-libs/ncurses-6.0:0=
@@ -38,6 +38,9 @@ PATCHES=(
 )
 
 src_prepare() {
+	if use xresources; then
+		PATCHES+=("${PATCHESDIR}/xresources/")
+	fi
 	if use scroll; then
 		PATCHES+=("${PATCHESDIR}/scroll/")
 	fi
