@@ -1,0 +1,59 @@
+From 8734ecc0c6049910a1b8dbd3bd705d26062f5380 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Sun, 6 Nov 2022 09:32:05 +0700
+Subject: [PATCH] boxdraw xresources support
+
+---
+ config.def.h | 6 +++---
+ st.h         | 2 +-
+ x.c          | 4 ++++
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 3543188..0f7eef6 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -70,11 +70,11 @@ static unsigned int cursorthickness = 2;
+  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+  * 0: disable (render all U25XX glyphs normally from the font).
+  */
+-const int boxdraw = 1;
+-const int boxdraw_bold = 1;
++int boxdraw = 1;
++int boxdraw_bold = 1;
+ 
+ /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+-const int boxdraw_braille = 1;
++int boxdraw_braille = 1;
+ 
+ /*
+  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
+diff --git a/st.h b/st.h
+index a111266..444a0da 100644
+--- a/st.h
++++ b/st.h
+@@ -134,5 +134,5 @@ extern unsigned int tabspaces;
+ extern unsigned int defaultfg;
+ extern unsigned int defaultbg;
+ extern unsigned int defaultcs;
+-extern const int boxdraw, boxdraw_bold, boxdraw_braille;
++extern int boxdraw, boxdraw_bold, boxdraw_braille;
+ extern double erreschide;
+diff --git a/x.c b/x.c
+index c190ebf..de83916 100644
+--- a/x.c
++++ b/x.c
+@@ -2113,6 +2113,10 @@ xrdb_load(void)
+ 		XRESOURCE_LOAD_FLOAT("chscale", chscale);
+ 
+ 		XRESOURCE_LOAD_INTEGER("tabspaces", tabspaces);
++
++		XRESOURCE_LOAD_INTEGER("boxdraw", boxdraw);
++		XRESOURCE_LOAD_INTEGER("boxdraw_bold", boxdraw_bold);
++		XRESOURCE_LOAD_INTEGER("boxdraw_braille", boxdraw_braille);
+ 	}
+ 	XFlush(dpy);
+ }
+-- 
+2.38.1
+
