@@ -12,6 +12,7 @@ SRC_URI="https://dl.suckless.org/tools/slock-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ppc64 ~x86"
+IUSE="xresources"
 
 RDEPEND="
 	virtual/libcrypt:=
@@ -24,13 +25,15 @@ DEPEND="
 	x11-base/xorg-proto
 "
 
+PATCHESDIR="${FILESDIR}/${PV}/"
 PATCHES=(
-	"${FILESDIR}"/${PV}/
+	"${PATCHESDIR}"/
 )
 
 S="${WORKDIR}/slock-${PV}"
 
 src_prepare() {
+	use xresources && PATCHES+=("${PATCHESDIR}/xresources/")
 	default
 
 	sed -i \

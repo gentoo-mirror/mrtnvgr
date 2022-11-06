@@ -41,6 +41,7 @@ src_prepare() {
 	use xresources && PATCHES+=("${PATCHESDIR}/xresources/")
 	use scroll && PATCHES+=("${PATCHESDIR}/scroll/")
 	use boxdraw && PATCHES+=("${PATCHESDIR}/boxdraw/")
+	use boxdraw && use xresources && PATCHES+=("${PATCHESDIR}/boxdraw+xresources/")
 	default
 
 	sed -i \
