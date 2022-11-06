@@ -15,7 +15,7 @@ fi
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-IUSE="scroll xresources"
+IUSE="xresources scroll boxdraw"
 
 RDEPEND="
 	>=sys-libs/ncurses-6.0:0=
@@ -40,6 +40,7 @@ PATCHES=(
 src_prepare() {
 	use xresources && PATCHES+=("${PATCHESDIR}/xresources/")
 	use scroll && PATCHES+=("${PATCHESDIR}/scroll/")
+	use boxdraw && PATCHES+=("${PATCHESDIR}/boxdraw/")
 	default
 
 	sed -i \
