@@ -1,0 +1,25 @@
+From 828fcd91da77b1f7eec7fad443ce9b19c8f3fb98 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Sun, 6 Nov 2022 08:42:31 +0700
+Subject: [PATCH] tabspaces xresources support
+
+---
+ x.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/x.c b/x.c
+index 3a6ebec..8a944cf 100644
+--- a/x.c
++++ b/x.c
+@@ -2100,6 +2100,8 @@ xrdb_load(void)
+ 
+ 		XRESOURCE_LOAD_FLOAT("cwscale", cwscale);
+ 		XRESOURCE_LOAD_FLOAT("chscale", chscale);
++
++		XRESOURCE_LOAD_INTEGER("tabspaces", tabspaces);
+ 	}
+ 	XFlush(dpy);
+ }
+-- 
+2.38.1
+
