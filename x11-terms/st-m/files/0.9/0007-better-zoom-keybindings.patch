@@ -1,17 +1,41 @@
-From 9a8b79f7d3c2751894e2ff1b62ae976604c2df89 Mon Sep 17 00:00:00 2001
+From d41d98f3a0a1f1858fcb99c40470e871292d4c57 Mon Sep 17 00:00:00 2001
 From: mrtnvgr <martynovegorOF@yandex.ru>
-Date: Sat, 5 Nov 2022 10:49:02 +0700
+Date: Sun, 6 Nov 2022 08:22:31 +0700
 Subject: [PATCH] better zoom keybindings
 
 ---
- config.def.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ config.def.h | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
-index 8f374e0..dd4e022 100644
+index 3a842d5..c017770 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -195,8 +195,8 @@ static Shortcut shortcuts[] = {
+@@ -167,6 +167,9 @@ static unsigned int defaultattr = 11;
+  */
+ static uint forcemousemod = ShiftMask;
+ 
++#define MODKEY Mod1Mask
++#define TERMMOD (ControlMask|ShiftMask)
++
+ /*
+  * Internal mouse shortcuts.
+  * Beware that overloading Button1 will disable the selection.
+@@ -178,11 +181,11 @@ static MouseShortcut mshortcuts[] = {
+ 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
+ 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
+ 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
++	{ TERMMOD,              Button4, zoom,           {.f = +1} },
++	{ TERMMOD,              Button5, zoom,           {.f = -1} },
+ };
+ 
+ /* Internal keyboard shortcuts. */
+-#define MODKEY Mod1Mask
+-#define TERMMOD (ControlMask|ShiftMask)
+ 
+ static Shortcut shortcuts[] = {
+ 	/* mask                 keysym          function        argument */
+@@ -190,8 +193,8 @@ static Shortcut shortcuts[] = {
  	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
  	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
  	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
@@ -23,5 +47,5 @@ index 8f374e0..dd4e022 100644
  	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
  	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 -- 
-2.38.0
+2.38.1
 
