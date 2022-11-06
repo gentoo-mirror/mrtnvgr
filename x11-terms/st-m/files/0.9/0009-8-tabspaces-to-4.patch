@@ -1,0 +1,25 @@
+From a9023b9d436f7c42bae672d6fdac619822048d0c Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Sun, 6 Nov 2022 08:36:01 +0700
+Subject: [PATCH] 8 tabspaces to 4
+
+---
+ config.def.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index 37bbc4c..b5a941d 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -88,7 +88,7 @@ char *termname = "st-256color";
+  *
+  *	stty tabs
+  */
+-unsigned int tabspaces = 8;
++unsigned int tabspaces = 4;
+ 
+ /* Terminal colors (16 first used in escape sequence) */
+ static const char *colorname[] = {
+-- 
+2.38.1
+

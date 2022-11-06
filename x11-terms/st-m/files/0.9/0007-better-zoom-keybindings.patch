@@ -11,30 +11,6 @@ diff --git a/config.def.h b/config.def.h
 index 3a842d5..c017770 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -167,6 +167,9 @@ static unsigned int defaultattr = 11;
-  */
- static uint forcemousemod = ShiftMask;
- 
-+#define MODKEY Mod1Mask
-+#define TERMMOD (ControlMask|ShiftMask)
-+
- /*
-  * Internal mouse shortcuts.
-  * Beware that overloading Button1 will disable the selection.
-@@ -178,11 +181,11 @@ static MouseShortcut mshortcuts[] = {
- 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
- 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
- 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
-+	{ TERMMOD,              Button4, zoom,           {.f = +1} },
-+	{ TERMMOD,              Button5, zoom,           {.f = -1} },
- };
- 
- /* Internal keyboard shortcuts. */
--#define MODKEY Mod1Mask
--#define TERMMOD (ControlMask|ShiftMask)
- 
- static Shortcut shortcuts[] = {
- 	/* mask                 keysym          function        argument */
 @@ -190,8 +193,8 @@ static Shortcut shortcuts[] = {
  	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
  	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
