@@ -80,6 +80,19 @@ index 62def59..95d6d57 100644
  	} else if (utmp) {
  		prog = utmp;
  		arg = NULL;
+
+diff --get a/st.h b/st.h
+index 2eec192..182ae5e 100644
+--- a/st.h
++++ b/st.h
+@@ -115,7 +116,6 @@ char *xstrdup(const char *);
+
+ /* config.h globals */
+ extern char *utmp;
+-extern char *scroll;
+ extern char *stty_args;
+ extern char *vtiden;
+ extern wchar_t *worddelimiters;
 -- 
 2.38.0
 
