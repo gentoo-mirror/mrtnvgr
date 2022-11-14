@@ -1,0 +1,25 @@
+From e8ffe73275661c26aac38cd557b8b85889902ae0 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Mon, 14 Nov 2022 18:30:51 +0700
+Subject: [PATCH] use lines as default
+
+---
+ config.def.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index c08c21e..569fabe 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -16,7 +16,7 @@ static const char *colors[SchemeLast][2] = {
+ 	[SchemeOut] = { "#000000", "#00ffff" },
+ };
+ /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
+-static unsigned int lines      = 0;
++static unsigned int lines      = 10;
+ 
+ /*
+  * Characters not considered part of a word while deleting words
+-- 
+2.38.1
+

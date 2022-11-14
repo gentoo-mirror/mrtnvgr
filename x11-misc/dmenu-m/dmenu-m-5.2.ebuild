@@ -8,7 +8,7 @@ SRC_URI="https://dl.suckless.org/tools/dmenu-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
-IUSE="xinerama"
+IUSE="xresources xinerama"
 
 RDEPEND="
 	media-libs/fontconfig
@@ -21,13 +21,15 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="virtual/pkgconfig"
 
+PATCHESDIR="${FILESDIR}/${PV}"
 PATCHES=(
-	"${FILESDIR}"/${PV}/
+	${PATCHESDIR}/
 )
 
 S="${WORKDIR}/dmenu-${PV}"
 
 src_prepare() {
+	use xresources && PATCHES+=("${PATCHESDIR}/xresources/")
 	default
 
 	sed -i \

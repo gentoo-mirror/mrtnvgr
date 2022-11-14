@@ -1,0 +1,25 @@
+From a0183b4eb00a92d3dbb7741f7b3e87600fe81dd5 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Mon, 14 Nov 2022 18:42:08 +0700
+Subject: [PATCH] xresources: lines support
+
+---
+ dmenu.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dmenu.c b/dmenu.c
+index 7319f8c..640067c 100644
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -761,6 +761,8 @@ readxresources(void) {
+ 			fonts[0] = strdup(xval.addr);
+ 		else
+ 			fonts[0] = strdup(fonts[0]);
++		if (XrmGetResource(xdb, "dmenu.lines", "*", &type, &xval))
++			lines = strtoul(xval.addr, NULL, 10);
+ 		if (XrmGetResource(xdb, "color0", "*", &type, &xval))
+ 			colors[SchemeNorm][ColBg] = strdup(xval.addr);
+ 		else
+-- 
+2.38.1
+
