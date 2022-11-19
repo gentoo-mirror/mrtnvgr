@@ -15,7 +15,7 @@ fi
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-IUSE="xresources scroll boxdraw"
+IUSE="xresources scroll boxdraw hidecursor"
 
 RDEPEND="
 	>=sys-libs/ncurses-6.0:0=
@@ -42,6 +42,7 @@ src_prepare() {
 	use scroll && PATCHES+=("${PATCHESDIR}/scroll/")
 	use boxdraw && PATCHES+=("${PATCHESDIR}/boxdraw/")
 	use boxdraw && use xresources && PATCHES+=("${PATCHESDIR}/boxdraw+xresources/")
+	use hidecursor && PATCHES+=("${PATCHESDIR}/hidecursor/")
 	default
 
 	sed -i \
