@@ -1,0 +1,14 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install unpack
+DEPEND=>=dev-util/cmake-3.14.0 >=dev-libs/openssl-1.1.1q x11-libs/libXrandr net-misc/curl media-libs/mesa media-libs/glu media-libs/libogg media-sound/pulseaudio
+DESCRIPTION=(MASKED) Advanced cross-platform rhythm game focused on keyboard play
+EAPI=8
+HOMEPAGE=https://github.com/etternagame/etterna/
+INHERIT=wrapper git-r3
+IUSE=
+LICENSE=MIT
+PROPERTIES=live
+RDEPEND=>=dev-libs/openssl-1.1.1q x11-libs/libXrandr net-misc/curl media-libs/mesa media-libs/glu media-libs/libogg media-sound/pulseaudio
+SLOT=0
+_eclasses_=wrapper	4a1902f969e5718126434fc35f3a0d9c	git-r3	2347f8fe2d392b2a091191f94be37e6f
+_md5_=5f6f7b826274944367d0a07ad39365cf
