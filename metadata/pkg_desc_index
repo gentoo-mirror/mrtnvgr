@@ -1,5 +1,5 @@
 games-vsrg/etterna 9999: (MASKED) Advanced cross-platform rhythm game focused on keyboard play
-media-sound/yabridge-bin 5.0.1: A modern and transparent way to use Windows VST2, VST3 and CLAP plugins on Linux
+media-sound/yabridge-bin 5.0.1 5.0.2: A modern and transparent way to use Windows VST2, VST3 and CLAP plugins on Linux
 net-misc/yandex-disk 0.1.6.1080_p1: CLI to access Yandex Disk file storage service
 x11-misc/dmenu-m 5.2: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/slock-m 1.5: simple X display locker
