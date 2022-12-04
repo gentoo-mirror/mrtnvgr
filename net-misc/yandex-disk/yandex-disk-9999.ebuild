@@ -13,10 +13,10 @@ SRC_URI="
 	amd64? ( http://repo.yandex.ru/yandex-disk/yandex-disk-latest.x86_64.rpm )
 	x86? ( http://repo.yandex.ru/yandex-disk/yandex-disk-latest.i386.rpm )
 "
+PROPERTIES="live"
 
 LICENSE="YDSLA"
 SLOT="0"
-KEYWORDS=""
 
 DEPEND="app-arch/gzip"
 RDEPEND="sys-libs/zlib"
