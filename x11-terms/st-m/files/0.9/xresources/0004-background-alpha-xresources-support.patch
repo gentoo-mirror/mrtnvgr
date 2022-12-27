@@ -1,0 +1,24 @@
+From c4f1e5c2ee0f0d5ad58f69bf14111ca7f53533ef Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Tue, 27 Dec 2022 23:07:03 +0700
+Subject: [PATCH] background alpha xresources support
+
+---
+ x.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/x.c b/x.c
+index 8155909..a9d2de1 100644
+--- a/x.c
++++ b/x.c
+@@ -2171,6 +2171,7 @@ xrdb_load(void)
+ 
+ 		XRESOURCE_LOAD_FLOAT("cwscale", cwscale);
+ 		XRESOURCE_LOAD_FLOAT("chscale", chscale);
++		XRESOURCE_LOAD_FLOAT("backgroundAlpha", backgroundAlpha);
+ 
+ 		XRESOURCE_LOAD_INTEGER("tabspaces", tabspaces);
+ 
+-- 
+2.39.0
+
