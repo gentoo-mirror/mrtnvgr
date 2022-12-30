@@ -1,6 +1,6 @@
-From ee7b0c252ab29621ba31d9374c100865ef8f286d Mon Sep 17 00:00:00 2001
+From dbfda9b039cf00414b1c9fca5709b8caa4160555 Mon Sep 17 00:00:00 2001
 From: mrtnvgr <martynovegorOF@yandex.ru>
-Date: Tue, 27 Dec 2022 23:18:50 +0700
+Date: Fri, 30 Dec 2022 12:58:28 +0700
 Subject: [PATCH] background alpha
 
 ---
@@ -12,10 +12,10 @@ Subject: [PATCH] background alpha
  5 files changed, 43 insertions(+), 11 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
-index 42678ed..62275f7 100644
+index a3c8b1c..cdc9d56 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -102,6 +102,9 @@ char *termname = "st-256color";
+@@ -90,6 +90,9 @@ char *termname = "st-256color";
   */
  unsigned int tabspaces = 4;
  
@@ -26,10 +26,10 @@ index 42678ed..62275f7 100644
  static const char *colorname[] = {
  	/* 8 normal colors */
 diff --git a/config.mk b/config.mk
-index 4fb0558..69b22ee 100644
+index 1e306f8..47c615e 100644
 --- a/config.mk
 +++ b/config.mk
-@@ -16,7 +16,7 @@ PKG_CONFIG = x86_64-pc-linux-gnu-pkg-config
+@@ -16,7 +16,7 @@ PKG_CONFIG = pkg-config
  INCS = -I$(X11INC) \
         `$(PKG_CONFIG) --cflags fontconfig` \
         `$(PKG_CONFIG) --cflags freetype2`
@@ -71,10 +71,10 @@ index 4a9f633..e953bbd 100644
  print erresc warnings
  .TP
 diff --git a/st.h b/st.h
-index 444a0da..70e4c8b 100644
+index 4d85e9a..b605f78 100644
 --- a/st.h
 +++ b/st.h
-@@ -131,6 +131,7 @@ extern int allowaltscreen;
+@@ -120,6 +120,7 @@ extern int allowaltscreen;
  extern int allowwindowops;
  extern char *termname;
  extern unsigned int tabspaces;
@@ -83,18 +83,18 @@ index 444a0da..70e4c8b 100644
  extern unsigned int defaultbg;
  extern unsigned int defaultcs;
 diff --git a/x.c b/x.c
-index a9d2de1..71a103c 100644
+index c5d390b..b7369e4 100644
 --- a/x.c
 +++ b/x.c
-@@ -115,6 +115,7 @@ typedef struct {
- 	int pointerisvisible;
- 	int scr;
+@@ -111,6 +111,7 @@ typedef struct {
  	int isfixed; /* is fixed geometry? */
-+	int depth; /* bit depth */
  	int l, t; /* left and top offset */
  	int gm; /* geometry mask */
++	int depth; /* bit depth */
  } XWindow;
-@@ -256,6 +257,7 @@ static double usedfontsize = 0;
+ 
+ typedef struct {
+@@ -250,6 +251,7 @@ static double usedfontsize = 0;
  static double defaultfontsize = 0;
  double erreschide = 1;
  
@@ -102,7 +102,7 @@ index a9d2de1..71a103c 100644
  static char *opt_class = NULL;
  static char **opt_cmd  = NULL;
  static char *opt_embed = NULL;
-@@ -777,7 +779,7 @@ xresize(int col, int row)
+@@ -764,7 +766,7 @@ xresize(int col, int row)
  
  	XFreePixmap(xw.dpy, xw.buf);
  	xw.buf = XCreatePixmap(xw.dpy, xw.win, win.w, win.h,
@@ -111,7 +111,7 @@ index a9d2de1..71a103c 100644
  	XftDrawChange(xw.draw, xw.buf);
  	xclear(0, 0, win.w, win.h);
  
-@@ -837,6 +839,13 @@ xloadcols(void)
+@@ -824,6 +826,13 @@ xloadcols(void)
  			else
  				die("could not allocate color %d\n", i);
  		}
@@ -125,7 +125,7 @@ index a9d2de1..71a103c 100644
  	loaded = 1;
  }
  
-@@ -1163,7 +1172,20 @@ xinit(int cols, int rows)
+@@ -1150,7 +1159,20 @@ xinit(int cols, int rows)
  	if (!(xw.dpy = XOpenDisplay(NULL)))
  		die("can't open display\n");
  	xw.scr = XDefaultScreen(xw.dpy);
@@ -147,7 +147,7 @@ index a9d2de1..71a103c 100644
  
  	/* font */
  	if (!FcInit())
-@@ -1173,7 +1195,7 @@ xinit(int cols, int rows)
+@@ -1160,7 +1182,7 @@ xinit(int cols, int rows)
  	xloadfonts(usedfont, 0);
  
  	/* colors */
@@ -156,7 +156,7 @@ index a9d2de1..71a103c 100644
  	xloadcols();
  
  	/* adjust fixed window geometry */
-@@ -1193,19 +1215,15 @@ xinit(int cols, int rows)
+@@ -1180,19 +1202,15 @@ xinit(int cols, int rows)
  		| ButtonMotionMask | ButtonPressMask | ButtonReleaseMask;
  	xw.attrs.colormap = xw.cmap;
  
@@ -179,7 +179,7 @@ index a9d2de1..71a103c 100644
  	XSetForeground(xw.dpy, dc.gc, dc.col[defaultbg].pixel);
  	XFillRectangle(xw.dpy, xw.buf, dc.gc, 0, 0, win.w, win.h);
  
-@@ -2229,6 +2247,9 @@ main(int argc, char *argv[])
+@@ -2073,6 +2091,9 @@ main(int argc, char *argv[])
  	case 'a':
  		allowaltscreen = 0;
  		break;
