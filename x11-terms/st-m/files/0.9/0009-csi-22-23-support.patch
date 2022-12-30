@@ -1,20 +1,20 @@
-From 615f1d531253ed72f0e93bf4d858f5b424bfe5db Mon Sep 17 00:00:00 2001
+From beee76299a4d8fafebbd99c6dcb57beb0b65fbed Mon Sep 17 00:00:00 2001
 From: mrtnvgr <martynovegorOF@yandex.ru>
-Date: Sat, 19 Nov 2022 17:26:15 +0700
+Date: Fri, 30 Dec 2022 12:54:36 +0700
 Subject: [PATCH] csi 22 23 support
 
 ---
  st.c    | 36 ++++++++++++++++++++++++++++++++----
  st.info |  4 ++--
  win.h   |  4 +++-
- x.c     | 41 ++++++++++++++++++++++++++++++++++++++---
- 4 files changed, 75 insertions(+), 10 deletions(-)
+ x.c     | 39 +++++++++++++++++++++++++++++++++++++--
+ 4 files changed, 74 insertions(+), 9 deletions(-)
 
 diff --git a/st.c b/st.c
-index 280a3e5..6a0cd19 100644
+index 8f308b4..572606f 100644
 --- a/st.c
 +++ b/st.c
-@@ -1867,6 +1867,33 @@ csihandle(void)
+@@ -1802,6 +1802,33 @@ csihandle(void)
  			goto unknown;
  		}
  		break;
@@ -48,7 +48,7 @@ index 280a3e5..6a0cd19 100644
  	}
  }
  
-@@ -1945,7 +1972,7 @@ strhandle(void)
+@@ -1880,7 +1907,7 @@ strhandle(void)
  		switch (par) {
  		case 0:
  			if (narg > 1) {
@@ -57,7 +57,7 @@ index 280a3e5..6a0cd19 100644
  				xseticontitle(strescseq.args[1]);
  			}
  			return;
-@@ -1955,7 +1982,7 @@ strhandle(void)
+@@ -1890,7 +1917,7 @@ strhandle(void)
  			return;
  		case 2:
  			if (narg > 1)
@@ -66,7 +66,7 @@ index 280a3e5..6a0cd19 100644
  			return;
  		case 52:
  			if (narg > 2 && allowwindowops) {
-@@ -2012,7 +2039,7 @@ strhandle(void)
+@@ -1947,7 +1974,7 @@ strhandle(void)
  		}
  		break;
  	case 'k': /* old title set compatibility */
@@ -75,7 +75,7 @@ index 280a3e5..6a0cd19 100644
  		return;
  	case 'P': /* DCS -- Device Control String */
  	case '_': /* APC -- Application Program Command */
-@@ -2386,6 +2413,7 @@ eschandle(uchar ascii)
+@@ -2321,6 +2348,7 @@ eschandle(uchar ascii)
  		break;
  	case 'c': /* RIS -- Reset to initial state */
  		treset();
@@ -83,7 +83,7 @@ index 280a3e5..6a0cd19 100644
  		resettitle();
  		xloadcols();
  		break;
-@@ -2689,7 +2717,7 @@ tresize(int col, int row)
+@@ -2616,7 +2644,7 @@ tresize(int col, int row)
  void
  resettitle(void)
  {
@@ -130,10 +130,10 @@ index 6de960d..2a40aa0 100644
  void xsetmode(int, unsigned int);
  void xsetpointermotion(int);
 diff --git a/x.c b/x.c
-index de83916..e09f4ef 100644
+index ac77210..290e351 100644
 --- a/x.c
 +++ b/x.c
-@@ -64,6 +64,9 @@ static void ttysend(const Arg *);
+@@ -63,6 +63,9 @@ static void ttysend(const Arg *);
  /* config.h for applying patches and the configuration. */
  #include "config.h"
  
@@ -143,7 +143,7 @@ index de83916..e09f4ef 100644
  /* XEMBED messages */
  #define XEMBED_FOCUS_IN  4
  #define XEMBED_FOCUS_OUT 5
-@@ -221,6 +224,8 @@ static DC dc;
+@@ -220,6 +223,8 @@ static DC dc;
  static XWindow xw;
  static XSelection xsel;
  static TermWindow win;
@@ -152,15 +152,13 @@ index de83916..e09f4ef 100644
  
  /* Font Ring Cache */
  enum {
-@@ -1637,10 +1642,30 @@ xseticontitle(char *p)
+@@ -1625,10 +1630,30 @@ xseticontitle(char *p)
  }
  
  void
 -xsettitle(char *p)
 +xfreetitlestack(void)
- {
--	XTextProperty prop;
--	DEFAULT(p, opt_title);
++{
 +	for (int i = 0; i < LEN(titlestack); i++) {
 +		free(titlestack[i]);
 +		titlestack[i] = NULL;
@@ -169,9 +167,10 @@ index de83916..e09f4ef 100644
 +
 +void
 +xsettitle(char *p, int pop)
-+{
-+ 	XTextProperty prop;
-+ 
+ {
+ 	XTextProperty prop;
+-	DEFAULT(p, opt_title);
++
 +	free(titlestack[tstki]);
 +	if (pop) {
 +		titlestack[tstki] = NULL;
@@ -186,7 +185,7 @@ index de83916..e09f4ef 100644
  
  	if (Xutf8TextListToTextProperty(xw.dpy, &p, 1, XUTF8StringStyle,
  	                                &prop) != Success)
-@@ -1650,6 +1675,16 @@ xsettitle(char *p)
+@@ -1638,6 +1663,16 @@ xsettitle(char *p)
  	XFree(prop.value);
  }
  
@@ -204,5 +203,5 @@ index de83916..e09f4ef 100644
  xstartdraw(void)
  {
 -- 
-2.38.1
+2.39.0
 

@@ -1,25 +1,25 @@
-From d41d98f3a0a1f1858fcb99c40470e871292d4c57 Mon Sep 17 00:00:00 2001
+From ac99c27f343a0eb509bb0306e7fad325b77cdc74 Mon Sep 17 00:00:00 2001
 From: mrtnvgr <martynovegorOF@yandex.ru>
-Date: Sun, 6 Nov 2022 08:22:31 +0700
+Date: Fri, 30 Dec 2022 12:51:11 +0700
 Subject: [PATCH] better zoom keybindings
 
 ---
- config.def.h | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ config.def.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/config.def.h b/config.def.h
-index 3a842d5..c017770 100644
+index 3a842d5..6adf33a 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -195,6 +195,8 @@ static Shortcut shortcuts[] = {
+@@ -192,6 +192,8 @@ static Shortcut shortcuts[] = {
  	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
+ 	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
+ 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 +	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
 +	{ TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
  	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
  	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
  	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 -- 
-2.38.1
+2.39.0
 
