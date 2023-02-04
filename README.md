@@ -1,10 +1,7 @@
-# gentoo-overlay
-My personal gentoo overlay
 
-## Installation
+**My personal gentoo overlay**
 
-- by using eselect-repository
-```
-# emerge app-eselect/eselect-repository
+Installation via [eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository):
+```bash
 eselect repository enable mrtnvgr
 ```
