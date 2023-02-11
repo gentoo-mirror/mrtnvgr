@@ -1,4 +1,5 @@
 dev-python/python-mpd 3.0.5: Python MPD client library
+media-fonts/delugia-complete 2111.01.2: Cascadia Code + Nerd Fonts
 media-fonts/delugia-mono-complete 2111.01.2: Cascadia Code + Nerd Fonts
 media-fonts/jetbrains-mono-nerd 2.3.3: JetBrains officially created font for developers
 media-sound/yabridge-bin 5.0.1 5.0.2 5.0.3: A modern and transparent way to use Windows VST2, VST3 and CLAP plugins on Linux
