@@ -1,4 +1,5 @@
 dev-python/python-mpd 3.0.5: Python MPD client library
+media-fonts/jetbrains-mono-nerd 2.3.3: JetBrains officially created font for developers
 media-sound/yabridge-bin 5.0.1 5.0.2 5.0.3: A modern and transparent way to use Windows VST2, VST3 and CLAP plugins on Linux
 x11-misc/dmenu-m 5.2: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/slock-m 1.5: simple X display locker
