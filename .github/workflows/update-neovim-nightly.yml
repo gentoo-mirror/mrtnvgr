@@ -1,0 +1,49 @@
+name: update-neovim-nightly
+
+on:
+  # release:
+  #   types: [published]
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Get release id
+        id: release_info
+        run: |
+          release=$(curl -sL https://api.github.com/repos/neovim/neovim/releases/tags/nightly)
+          release_id=$(echo "$release" | jq -r ".id")
+          echo "release_id=${release_id}" >> $GITHUB_OUTPUT
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Get ebuild id
+        id: ebuild_info
+        run: |
+          cd app-editors/neovim-nightly
+          ebuild_name=$(find neovim-nightly*.ebuild | head -n 1)
+          ebuild_id=$(echo "${ebuild_name%.ebuild}" | cut -d '-' -f 4)
+          echo "ebuild_id=${ebuild_id}" >> $GITHUB_OUTPUT
+
+      - name: Rename ebuild to new id
+        if: steps.release_info.release_id != steps.ebuild_info.ebuild_id
+        env:
+          RELEASE_ID: ${{ steps.release_info.release_id }}
+          EBUILD_ID: ${{ steps.ebuild_info.ebuild_id }}
+        run: |
+          cd app-editors/neovim-nightly
+          mv neovim-nightly-${EBUILD_ID}.ebuild neovim-nightly-${RELEASE_ID}.ebuild
+
+      - name: Create Pull Request
+        if: steps.release_info.release_id != steps.ebuild_info.ebuild_id
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Update neovim-nightly package
+          title: Update neovim-nightly package
+          labels: automated pr
+          branch: ${{ github.ref }}
+          base: main
