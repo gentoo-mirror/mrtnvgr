@@ -1,4 +1,5 @@
 name: update-neovim-nightly
+run-name: Check for updates/Update neovim-nightly package
 
 on:
   # release:
@@ -16,7 +17,9 @@ jobs:
         run: |
           release=$(curl -sL https://api.github.com/repos/neovim/neovim/releases/tags/nightly)
           release_id=$(echo "$release" | jq -r ".id")
+          release_html_url=$(echo "$release" | jq -r ".html_url")
           echo "release_id=${release_id}" >> $GITHUB_OUTPUT
+          echo "release_html_url=${release_html_url}" >> $GITHUB_OUTPUT
 
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -28,6 +31,26 @@ jobs:
           ebuild_name=$(find neovim-nightly*.ebuild | head -n 1)
           ebuild_id=$(echo "${ebuild_name%.ebuild}" | cut -d '-' -f 3)
           echo "ebuild_id=${ebuild_id}" >> $GITHUB_OUTPUT
+
+      - name: Work with old pull requests
+        uses: actions/github-script@v6
+        id: get-prs
+        with:
+          script: |
+            const opts = await github.rest.pulls.list({
+              owner: ${GITHUB_ACTOR},
+              repo: ${GITHUB_REPO},
+              state: "open",
+              head: 'label:"ebuild update"',
+            })
+            const prs = await github.paginate(opts)
+            var result = []
+
+            for (const pr of prs) {
+              result.push("Closes #${pr.number}")
+            }
+            return result.join("\n")
+          result-encoding: string
 
       - name: Rename ebuild to new id
         if: steps.release_info.outputs.release_id != steps.ebuild_info.outputs.ebuild_id
@@ -44,4 +67,15 @@ jobs:
         with:
           commit-message: Update neovim-nightly package
           title: Update neovim-nightly package
-          labels: automated pr
+          body: |
+            Update [neovim-nightly][1] package
+            ${{ steps.get-prs.outputs.result }}
+            [1]: ${{ steps.release_info.outputs.release_html_url }}
+          branch: |
+            update-neovim-nightly/${{ steps.release_info.outputs.release_id }}
+          delete-branch: true
+          assignees: |
+            ${{ github.actor }}
+          reviewers: |
+            ${{ github.actor }}
+          labels: ebuild update
