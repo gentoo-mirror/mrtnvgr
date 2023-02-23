@@ -2,8 +2,8 @@ name: update-neovim-nightly
 run-name: Check for updates/Update neovim-nightly package
 
 on:
-  # release:
-  #   types: [published]
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
         if: steps.release_info.outputs.release_id != steps.ebuild_info.outputs.ebuild_id
         uses: EndBug/add-and-commit@v9
         with:
-          message: Update neovim nightly package
+          message: Update neovim-nightly package
           default_author: user_info
           committer_name: GitHub Actions
           committer_email: 41898282+github-actions[bot]@users.noreply.github.com
