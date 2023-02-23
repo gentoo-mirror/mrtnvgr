@@ -42,14 +42,14 @@ jobs:
               repo: ${GITHUB_REPO},
               state: "open",
               head: 'label:"ebuild update"',
-            })
-            const prs = await github.paginate(opts)
-            var result = []
+            });
+            const prs = await github.paginate(opts);
+            var result = [];
 
             for (const pr of prs) {
-              result.push("Closes #${pr.number}")
+              result.push(`Closes #${pr.number}`);
             }
-            return result.join("\n")
+            return result.join("\n");
           result-encoding: string
 
       - name: Rename ebuild to new id
