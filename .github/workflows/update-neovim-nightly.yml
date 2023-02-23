@@ -18,6 +18,9 @@ jobs:
           release_id=$(echo "$release" | jq -r ".id")
           echo "release_id=${release_id}" >> $GITHUB_OUTPUT
 
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
       - name: Get ebuild id
         id: ebuild_info
         run: |
@@ -42,4 +45,5 @@ jobs:
           commit-message: Update neovim-nightly package
           title: Update neovim-nightly package
           labels: automated pr
-          branch: main
+          branch: ${{ github.ref }}
+          base: main
