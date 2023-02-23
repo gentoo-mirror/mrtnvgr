@@ -45,5 +45,3 @@ jobs:
           commit-message: Update neovim-nightly package
           title: Update neovim-nightly package
           labels: automated pr
-          branch: ${{ github.ref }}
-          base: main
