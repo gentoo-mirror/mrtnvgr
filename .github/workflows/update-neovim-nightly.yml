@@ -26,20 +26,20 @@ jobs:
         run: |
           cd app-editors/neovim-nightly
           ebuild_name=$(find neovim-nightly*.ebuild | head -n 1)
-          ebuild_id=$(echo "${ebuild_name%.ebuild}" | cut -d '-' -f 4)
+          ebuild_id=$(echo "${ebuild_name%.ebuild}" | cut -d '-' -f 3)
           echo "ebuild_id=${ebuild_id}" >> $GITHUB_OUTPUT
 
       - name: Rename ebuild to new id
-        if: steps.release_info.release_id != steps.ebuild_info.ebuild_id
+        if: steps.release_info.outputs.release_id != steps.ebuild_info.outputs.ebuild_id
         env:
-          RELEASE_ID: ${{ steps.release_info.release_id }}
-          EBUILD_ID: ${{ steps.ebuild_info.ebuild_id }}
+          RELEASE_ID: ${{ steps.release_info.outputs.release_id }}
+          EBUILD_ID: ${{ steps.ebuild_info.outputs.ebuild_id }}
         run: |
           cd app-editors/neovim-nightly
           mv neovim-nightly-${EBUILD_ID}.ebuild neovim-nightly-${RELEASE_ID}.ebuild
 
       - name: Create Pull Request
-        if: steps.release_info.release_id != steps.ebuild_info.ebuild_id
+        if: steps.release_info.outputs.release_id != steps.ebuild_info.outputs.ebuild_id
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: Update neovim-nightly package
