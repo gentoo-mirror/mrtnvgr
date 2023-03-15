@@ -15,7 +15,7 @@ fi
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-IUSE="xresources scroll boxdraw hidecursor"
+IUSE="+xresources +scroll +boxdraw +hidecursor"
 
 RDEPEND="
 	>=sys-libs/ncurses-6.0:0=
