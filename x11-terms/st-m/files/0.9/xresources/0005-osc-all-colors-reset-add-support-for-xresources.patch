@@ -1,0 +1,38 @@
+From c84f53e7cab74b7067068715ecd721ce4561de71 Mon Sep 17 00:00:00 2001
+From: mrtnvgr <martynovegorOF@yandex.ru>
+Date: Wed, 15 Mar 2023 15:43:08 +0700
+Subject: [PATCH] osc all colors reset: add support for xresources
+
+---
+ st.c | 1 +
+ st.h | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/st.c b/st.c
+index da11d3b..0a01129 100644
+--- a/st.c
++++ b/st.c
+@@ -2019,6 +2019,7 @@ strhandle(void)
+ 			p = strescseq.args[2];
+ 			/* FALLTHROUGH */
+ 		case 111: /* all colors reset */
++			xrdb_load();
+ 			xloadcols();
+ 			return;
+ 		case 104: /* color reset */
+diff --git a/st.h b/st.h
+index 70e4c8b..3929130 100644
+--- a/st.h
++++ b/st.h
+@@ -78,6 +78,8 @@ typedef union {
+ 	const char *s;
+ } Arg;
+ 
++void xrdb_load(void);
++
+ void die(const char *, ...);
+ void redraw(void);
+ void draw(void);
+-- 
+2.39.2
+
