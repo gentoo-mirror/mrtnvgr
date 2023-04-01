@@ -44,7 +44,7 @@ jobs:
         if: steps.release_info.outputs.release_id != steps.ebuild_info.outputs.ebuild_id
         uses: EndBug/add-and-commit@v9
         with:
-          message: Update neovim-nightly package
+          message: "app-editors/neovim-nightly: update"
           default_author: user_info
           committer_name: GitHub Actions
           committer_email: 41898282+github-actions[bot]@users.noreply.github.com
