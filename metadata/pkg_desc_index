@@ -2,6 +2,7 @@ app-editors/neovim-nightly 99614751: Vim-fork focused on extensibility and agili
 media-fonts/delugia-complete 2111.01.2: Cascadia Code + Nerd Fonts
 media-fonts/delugia-mono-complete 2111.01.2: Cascadia Code + Nerd Fonts
 media-fonts/jetbrains-mono-nerd 2.3.3: JetBrains officially created font for developers
+media-libs/faust 2.54.9 9999: A realtime audio utility library for C++
 media-sound/yabridge-bin 5.0.3 5.0.4: A modern and transparent way to use Windows VST2, VST3 and CLAP plugins on Linux
 x11-misc/dmenu-m 5.2: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/slock-m 1.5: simple X display locker
