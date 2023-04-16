@@ -14,6 +14,8 @@ HOMEPAGE="https://github.com/grame-cncm/faust"
 LICENSE="GPL-2"
 SLOT="0"
 
+RESTRICT="strip"
+
 src_install() {
-	emake PREFIX="${T}" install
+	emake DESTDIR="${D}" PREFIX="/usr" install
 }
