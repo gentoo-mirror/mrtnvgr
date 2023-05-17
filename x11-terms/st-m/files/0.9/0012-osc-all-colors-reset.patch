@@ -1,26 +1,27 @@
-From 0eba369269b4fd3372aff7b2b4f49b20c76b0e87 Mon Sep 17 00:00:00 2001
+From 4b382c760d1605002068c9279b3b2172530ac0f4 Mon Sep 17 00:00:00 2001
 From: mrtnvgr <martynovegorOF@yandex.ru>
-Date: Wed, 15 Mar 2023 15:40:55 +0700
+Date: Wed, 17 May 2023 13:32:21 +0700
 Subject: [PATCH] osc all colors reset
 
 ---
- st.c | 3 +++
- 1 file changed, 3 insertions(+)
+ st.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/st.c b/st.c
-index 6a0cd19..da11d3b 100644
+index 6a0cd19..dea0ea6 100644
 --- a/st.c
 +++ b/st.c
-@@ -2018,6 +2018,9 @@ strhandle(void)
+@@ -2018,6 +2018,10 @@ strhandle(void)
  				break;
  			p = strescseq.args[2];
  			/* FALLTHROUGH */
 +		case 111: /* all colors reset */
 +			xloadcols();
++			tfulldirt();
 +			return;
  		case 104: /* color reset */
  			j = (narg > 1) ? atoi(strescseq.args[1]) : -1;
  
 -- 
-2.39.2
+2.40.1
 
