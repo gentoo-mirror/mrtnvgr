@@ -1,8 +1,10 @@
 # **My personal gentoo overlay**
 
-**WARNING: `neovim-nightly` packages are generated automatically by github-actions, please report any breakage!**
+**NOTE: `neovim-nightly` ebuilds are generated automatically**
 
 ## Installation via [eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository):
+
 ```bash
 eselect repository enable mrtnvgr
+emerge --sync mrtnvgr
 ```
