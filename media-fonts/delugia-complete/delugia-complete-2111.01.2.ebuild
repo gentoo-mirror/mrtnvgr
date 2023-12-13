@@ -5,7 +5,7 @@ inherit font
 DESCRIPTION="Cascadia Code + Nerd Fonts"
 HOMEPAGE="https://github.com/adam7/delugia-code"
 SRC_URI="https://github.com/adam7/delugia-code/releases/download/v${PV}/${PN}.zip"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 LICENSE="MIT"
 SLOT="0"

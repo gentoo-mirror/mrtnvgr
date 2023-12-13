@@ -6,7 +6,7 @@ SRC_URI="https://github.com/robbert-vdh/yabridge/releases/download/${PV}/yabridg
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 RESTRICT="strip"
 

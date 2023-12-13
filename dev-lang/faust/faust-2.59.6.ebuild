@@ -5,7 +5,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/grame-cncm/faust/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS=""
 fi
 
 DESCRIPTION="A realtime audio utility library for C++"
