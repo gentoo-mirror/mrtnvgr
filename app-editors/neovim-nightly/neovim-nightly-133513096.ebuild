@@ -13,7 +13,6 @@ HOMEPAGE="https://neovim.io"
 
 SRC_URI="https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz -> nightly.tar.gz"
 
-# Overlay archival is going to happen on the 1st of the January 2024.
 KEYWORDS=""
 
 LICENSE="Apache-2.0 vim"

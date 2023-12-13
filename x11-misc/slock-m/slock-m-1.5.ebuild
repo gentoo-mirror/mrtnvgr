@@ -11,7 +11,7 @@ SRC_URI="https://dl.suckless.org/tools/slock-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc64 ~x86"
+KEYWORDS=""
 IUSE="xresources"
 
 RDEPEND="

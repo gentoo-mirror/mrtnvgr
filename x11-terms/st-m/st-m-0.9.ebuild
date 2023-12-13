@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.suckless.org/st"
 else
 	SRC_URI="https://dl.suckless.org/st/st-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~ppc64 ~riscv ~x86"
+	KEYWORDS=""
 fi
 
 LICENSE="MIT-with-advertising"
