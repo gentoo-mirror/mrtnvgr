@@ -12,7 +12,9 @@ DESCRIPTION="Vim-fork focused on extensibility and agility"
 HOMEPAGE="https://neovim.io"
 
 SRC_URI="https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz -> nightly.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~x64-macos"
+
+# Overlay archival is going to happen on the 1st of the January 2024.
+KEYWORDS=""
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
