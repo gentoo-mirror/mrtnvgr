@@ -1,4 +1,4 @@
-BDEPEND=test? ( lua_single_target_luajit? ( dev-lua/busted[lua_targets_luajit(-)] ) ) app-alternatives/ninja >=dev-build/cmake-3.20.5
+BDEPEND=test? ( lua_single_target_luajit? ( dev-lua/busted[lua_targets_luajit(-)] ) ) app-alternatives/ninja >=dev-build/cmake-3.28.5
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
 DEPEND=lua_single_target_luajit? ( dev-lang/luajit:= ) >=dev-lua/luv-1.44.2[lua_single_target_luajit(-)?] lua_single_target_luajit? ( dev-lua/lpeg[lua_targets_luajit(-)] dev-lua/mpack[lua_targets_luajit(-)] ) >=dev-libs/libuv-1.44.2:= >=dev-libs/libvterm-0.3 >=dev-libs/msgpack-3.0.0:= >=dev-libs/tree-sitter-0.20.2:= tui? ( >=dev-libs/libtermkey-0.22 >=dev-libs/unibilium-2.0.0:0= ) !app-editors/neovim
 DESCRIPTION=Vim-fork focused on extensibility and agility
@@ -13,5 +13,5 @@ REQUIRED_USE=test? ( lua_single_target_luajit )
 RESTRICT=!test? ( test ) test
 SLOT=0
 SRC_URI=https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz -> nightly.tar.gz
-_eclasses_=toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0	flag-o-matic	a7afe42e95fb46ce9691605acfb24672	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	460729dc36f68cf03b044bc1d367e34a	lua-utils	7c89927eda6f21c4c48136247077ab37	lua-single	75fe955a36b18e199213c8739eaebdbb	optfeature	538bce96e5589935b57e178e8635f301	xdg	3ef49a87c52c8b77c476351195dfe575
+_eclasses_=toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0	flag-o-matic	a7afe42e95fb46ce9691605acfb24672	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	cf95ad72ab207889c1668fc0d1bee181	lua-utils	7c89927eda6f21c4c48136247077ab37	lua-single	75fe955a36b18e199213c8739eaebdbb	optfeature	538bce96e5589935b57e178e8635f301	xdg	3ef49a87c52c8b77c476351195dfe575
 _md5_=6e4128eb333c880f85da7f9dc20f44b2
